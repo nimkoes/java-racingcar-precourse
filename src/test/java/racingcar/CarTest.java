@@ -3,6 +3,12 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +18,7 @@ public class CarTest {
     
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("nimkoes");
     }
     
     @Test
@@ -33,5 +39,23 @@ public class CarTest {
         car.action(5);
         
         assertThat(car.moveDistance()).isEqualTo(2);
+    }
+    
+    @ParameterizedTest
+    @ValueSource(strings = {"nimko,pobi", "a,b,c,d"})
+    @DisplayName("레이싱 참가 자동차 Collection 생성")
+    void createCarCollection(String userInput) {
+        CarCollection carCollection = new CarCollection();
+        List<String> participants = Arrays.asList(userInput.split(","));
+        
+        for (String participant : participants) {
+            carCollection.getCars().add(new Car(participant));
+        }
+        
+        int i = 0;
+        for (String participant : participants) {
+            assertThat(participants.contains(carCollection.getCars().get(i++).getName())).isTrue();
+        }
+        assertThat(carCollection.getCars().size()).isEqualTo(participants.size());
     }
 }

@@ -2,6 +2,15 @@ package racingcar;
 
 public class Car {
     private int moveDistance;
+    private String name;
+    
+    public Car(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
     
     public CarAction action(int randomNumber) {
         if(getAction(randomNumber)) {
