@@ -5,8 +5,10 @@ public class Car {
 
     private int moveDistance;
     private String name;
+    private StringBuilder trace;
 
     public Car(String name) {
+        trace = new StringBuilder();
         this.name = name;
     }
 
@@ -29,6 +31,7 @@ public class Car {
             return CarAction.STOP;
         }
         ++this.moveDistance;
+        move();
         return CarAction.GO;
     }
 
@@ -44,6 +47,14 @@ public class Car {
         if (isWinner(this)) {
             winner.getCars().add(this);
         }
+    }
+
+    public void move() {
+        this.trace.append("-");
+    }
+
+    public String getTrace() {
+        return trace.toString();
     }
 
     private boolean isWinner(Car car) {
