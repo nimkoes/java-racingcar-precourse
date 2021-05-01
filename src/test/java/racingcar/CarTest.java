@@ -65,11 +65,11 @@ public class CarTest {
         
         CarCollection carCollection = new CarCollection();
         List<String> participants = Arrays.asList(userInput.split(","));
-    
+        
         for (String participant : participants) {
             carCollection.getCars().add(new Car(participant));
         }
-    
+        
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
@@ -102,7 +102,7 @@ public class CarTest {
         
         Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
         Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
-    
+        
         CarCollection winner = new CarCollection();
         RacingUtil.makeWinner(winner, carCollection);
         
