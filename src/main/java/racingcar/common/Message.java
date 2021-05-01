@@ -8,7 +8,7 @@ public enum Message {
     OUTPUT_ERROR_EMPTY_STRING("공백 입력은 허용하지 않습니다."),
     OUTPUT_ERROR_DUPLICATE_NAME("같은 이름은 입력할 수 없습니다."),
     OUTPUT_ERROR_LENGTH_OVER("이름의 길기는 5를 초과할 수 없습니다."),
-    OUTPUT_ERROR_MIUNS_VALUE("0보다 큰 값을 입력해 주시기 바랍니다."),
+    OUTPUT_ERROR_MINUS_VALUE("0보다 큰 값을 입력해 주시기 바랍니다."),
     OUTPUT_ERROR_NOT_A_NUMBER("0보다 큰 정수값을 입력해 주시기 바랍니다.");
 
     private String msg;

@@ -49,7 +49,7 @@ public class ValidationUtil {
 
     private static boolean isPositiveNumber(String userInput) {
         if (Integer.parseInt(userInput) < 1) {
-            System.out.println(Message.OUTPUT_ERROR_MIUNS_VALUE.getMsg());
+            System.out.println(Message.OUTPUT_ERROR_MINUS_VALUE.getMsg());
             return false;
         }
         return true;
