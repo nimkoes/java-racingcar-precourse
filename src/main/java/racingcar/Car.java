@@ -1,11 +1,23 @@
 package racingcar;
 
 public class Car {
+    private static int maxDistance;
+    
     private int moveDistance;
     private String name;
     
     public Car(String name) {
         this.name = name;
+    }
+    
+    public static int getMaxDistance() {
+        return maxDistance;
+    }
+    
+    public static void updateDistance(Car car, CarAction action) {
+        if (CarAction.GO == action) {
+            maxDistance = Math.max(maxDistance, car.moveDistance());
+        }
     }
     
     public String getName() {

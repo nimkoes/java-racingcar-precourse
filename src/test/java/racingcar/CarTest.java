@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,5 +56,29 @@ public class CarTest {
             assertThat(participants.contains(carCollection.getCars().get(i++).getName())).isTrue();
         }
         assertThat(carCollection.getCars().size()).isEqualTo(participants.size());
+    }
+    
+    @Test
+    @DisplayName("가장 멀리 간 자동차의 이동 거리 테스트")
+    void updateMaxDistance() {
+        String userInput = "nimkoes,pobi,whiteship";
+        
+        CarCollection carCollection = new CarCollection();
+        List<String> participants = Arrays.asList(userInput.split(","));
+    
+        for (String participant : participants) {
+            carCollection.getCars().add(new Car(participant));
+        }
+    
+        Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
+        Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
+        Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
+        
+        Car.updateDistance(carCollection.getCars().get(1), carCollection.getCars().get(1).action(5));
+        
+        Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
+        Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
+        
+        assertThat(Car.getMaxDistance()).isEqualTo(3);
     }
 }
