@@ -77,23 +77,24 @@ public class CarTest {
     @DisplayName("가장 멀리 간 자동차의 이동 거리 테스트")
     void updateMaxDistance() {
 
+        commonUpdateDistance();
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
-        Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
-        Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
-        
-        Car.updateDistance(carCollection.getCars().get(1), carCollection.getCars().get(1).action(5));
-        
-        Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
-        Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
-        
+
         assertThat(Car.getMaxDistance()).isEqualTo(3);
     }
-    
     
     @Test
     @DisplayName("우승자 확인 테스트")
     void winner() {
-        
+        CarCollection winner = new CarCollection();
+
+        commonUpdateDistance();
+        RacingUtil.makeWinner(winner, carCollection);
+
+        assertThat(winner.toString()).isEqualTo("nimkoes, whiteship");
+    }
+    
+    private void commonUpdateDistance() {
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
         
@@ -101,10 +102,6 @@ public class CarTest {
         
         Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
         Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
-        
-        CarCollection winner = new CarCollection();
-        RacingUtil.makeWinner(winner, carCollection);
-        
-        assertThat(winner.toString()).isEqualTo("nimkoes, whiteship");
     }
+    
 }
