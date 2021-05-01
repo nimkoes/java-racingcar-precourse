@@ -2,6 +2,10 @@ package racingcar;
 
 import java.util.Scanner;
 
+import racingcar.common.Message;
+import racingcar.common.RacingUtil;
+import racingcar.core.CarCollection;
+
 public class MainApp {
 
     static CarCollection carCollection = new CarCollection();

@@ -10,6 +10,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.common.RacingUtil;
+import racingcar.core.Car;
+import racingcar.core.CarAction;
+import racingcar.core.CarCollection;
 
 public class CarTest {
     

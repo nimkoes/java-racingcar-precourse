@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.core;
 
 public class Car {
     private static int maxDistance;
@@ -17,7 +17,7 @@ public class Car {
     }
 
     public static void updateDistance(Car car, CarAction action) {
-        if (CarAction.GO == action) {
+        if (action.isGo()) {
             maxDistance = Math.max(maxDistance, car.moveDistance());
         }
     }

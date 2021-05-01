@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.core;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.common.ValidationUtil;
 
 public class ValidationUtilTest {
     

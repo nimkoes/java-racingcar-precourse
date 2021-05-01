@@ -1,9 +1,12 @@
-package racingcar;
+package racingcar.common;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+import racingcar.core.Car;
+import racingcar.core.CarCollection;
 
 public class RacingUtil {
 
