@@ -39,4 +39,14 @@ public class Car {
     public int moveDistance() {
         return this.moveDistance;
     }
+    
+    public void checkWinner(CarCollection winner) {
+        if (isWinner(this)) {
+            winner.getCars().add(this);
+        }
+    }
+    
+    private boolean isWinner(Car car) {
+        return car.moveDistance() == maxDistance;
+    }
 }

@@ -14,4 +14,12 @@ public class CarCollection {
         return cars;
     }
     
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        
+        for (Car car : cars) sb.append(", " + car.getName());
+        
+        return sb.toString().substring(2);
+    }
 }

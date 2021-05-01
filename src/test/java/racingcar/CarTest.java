@@ -1,5 +1,7 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,8 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     
@@ -80,5 +80,32 @@ public class CarTest {
         Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
         
         assertThat(Car.getMaxDistance()).isEqualTo(3);
+    }
+    
+    
+    @Test
+    @DisplayName("우승자 확인 테스트")
+    void winner() {
+        String userInput = "nimkoes,pobi,whiteship";
+        
+        CarCollection carCollection = new CarCollection();
+        List<String> participants = Arrays.asList(userInput.split(","));
+        
+        for (String participant : participants) {
+            carCollection.getCars().add(new Car(participant));
+        }
+        
+        Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
+        Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
+        
+        Car.updateDistance(carCollection.getCars().get(1), carCollection.getCars().get(1).action(5));
+        
+        Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
+        Car.updateDistance(carCollection.getCars().get(2), carCollection.getCars().get(2).action(5));
+    
+        CarCollection winner = new CarCollection();
+        RacingUtil.makeWinner(winner, carCollection);
+        
+        assertThat(winner.toString()).isEqualTo("nimkoes, whiteship");
     }
 }
