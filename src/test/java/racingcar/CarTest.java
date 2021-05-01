@@ -18,10 +18,21 @@ import racingcar.core.CarCollection;
 public class CarTest {
     
     Car car;
+    String userInput;
+    CarCollection carCollection;
+    List<String> participants;
     
     @BeforeEach
     void setUp() {
         car = new Car("nimkoes");
+        userInput = "nimkoes,pobi,whiteship";
+    
+        carCollection = new CarCollection();
+        participants = Arrays.asList(userInput.split(","));
+    
+        for (String participant : participants) {
+            carCollection.getCars().add(new Car(participant));
+        }
     }
     
     @Test
@@ -65,15 +76,7 @@ public class CarTest {
     @Test
     @DisplayName("가장 멀리 간 자동차의 이동 거리 테스트")
     void updateMaxDistance() {
-        String userInput = "nimkoes,pobi,whiteship";
-        
-        CarCollection carCollection = new CarCollection();
-        List<String> participants = Arrays.asList(userInput.split(","));
-        
-        for (String participant : participants) {
-            carCollection.getCars().add(new Car(participant));
-        }
-        
+
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
@@ -90,14 +93,6 @@ public class CarTest {
     @Test
     @DisplayName("우승자 확인 테스트")
     void winner() {
-        String userInput = "nimkoes,pobi,whiteship";
-        
-        CarCollection carCollection = new CarCollection();
-        List<String> participants = Arrays.asList(userInput.split(","));
-        
-        for (String participant : participants) {
-            carCollection.getCars().add(new Car(participant));
-        }
         
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
         Car.updateDistance(carCollection.getCars().get(0), carCollection.getCars().get(0).action(5));
