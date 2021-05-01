@@ -1,6 +1,9 @@
 package racingcar.core;
 
 public class Car {
+
+    private static final int GO_STOP_JUDGE_VALUE = 3;
+
     private static int maxDistance;
 
     private int moveDistance;
@@ -18,7 +21,7 @@ public class Car {
 
     public static void updateDistance(Car car, CarAction action) {
         if (action.isGo()) {
-            maxDistance = Math.max(maxDistance, car.moveDistance());
+            maxDistance = Math.max(maxDistance, car.getMoveDistance());
         }
     }
 
@@ -27,19 +30,19 @@ public class Car {
     }
 
     public CarAction action(int randomNumber) {
-        if (getAction(randomNumber)) {
+        if (judgement(randomNumber)) {
             return CarAction.STOP;
         }
         ++this.moveDistance;
-        move();
+        appendGoTrace();
         return CarAction.GO;
     }
 
-    private boolean getAction(int actionNumber) {
-        return actionNumber <= 3;
+    private boolean judgement(int actionNumber) {
+        return actionNumber <= GO_STOP_JUDGE_VALUE;
     }
 
-    public int moveDistance() {
+    public int getMoveDistance() {
         return this.moveDistance;
     }
 
@@ -49,7 +52,7 @@ public class Car {
         }
     }
 
-    public void move() {
+    public void appendGoTrace() {
         this.trace.append("-");
     }
 
@@ -58,6 +61,6 @@ public class Car {
     }
 
     private boolean isWinner(Car car) {
-        return car.moveDistance() == maxDistance;
+        return car.getMoveDistance() == maxDistance;
     }
 }

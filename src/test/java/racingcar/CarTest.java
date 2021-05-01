@@ -41,7 +41,7 @@ public class CarTest {
         car.action(3);
         car.action(5);
         
-        assertThat(car.moveDistance()).isEqualTo(2);
+        assertThat(car.getMoveDistance()).isEqualTo(2);
     }
     
     @ParameterizedTest
