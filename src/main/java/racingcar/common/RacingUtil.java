@@ -32,7 +32,6 @@ public class RacingUtil {
         List<String> participants = Arrays.asList(userInput.split(","));
 
         if (!ValidationUtil.validName(participants)) {
-            System.out.println(Message.OUTPUT_ERROR_INVALID_VALUE.getMsg());
             System.exit(0);
         }
 
@@ -43,7 +42,6 @@ public class RacingUtil {
 
     public static void validMoveCount(String tryCount) {
         if (!ValidationUtil.validMoveCount(tryCount)) {
-            System.out.println(Message.OUTPUT_ERROR_INVALID_VALUE.getMsg());
             System.exit(0);
         }
     }

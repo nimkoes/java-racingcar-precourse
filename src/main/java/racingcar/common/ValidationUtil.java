@@ -9,14 +9,25 @@ public class ValidationUtil {
     static final String REG_EXP_ONLY_NUMBER = "^[0-9]+$";
 
     public static boolean validName(List<String> participants) {
-        return !participants.isEmpty()
-                && !participants.contains("")
-                && !isExistsDuplicateName(participants)
-                && !isNameLengthOver(participants);
+        return !isEmptyOrBlank(participants)
+            && !isExistsDuplicateName(participants)
+            && !isNameLengthOver(participants);
+    }
+
+    private static boolean isEmptyOrBlank(List<String> participants) {
+        if (participants.isEmpty() || participants.contains("")) {
+            System.out.println(Message.OUTPUT_ERROR_EMPTY_STRING.getMsg());
+            return true;
+        }
+        return false;
     }
 
     private static boolean isExistsDuplicateName(List<String> participants) {
-        return participants.size() != new HashSet<>(participants).size();
+        if (participants.size() != new HashSet<>(participants).size()) {
+            System.out.println(Message.OUTPUT_ERROR_DUPLICATE_NAME.getMsg());
+            return true;
+        }
+        return false;
     }
 
     private static boolean isNameLengthOver(List<String> participants) {
@@ -24,7 +35,12 @@ public class ValidationUtil {
         for (String participant : participants) {
             maxLength = Math.max(maxLength, participant.length());
         }
-        return maxLength > MAX_NAME_LENGTH;
+
+        if (maxLength > MAX_NAME_LENGTH) {
+            System.out.println(Message.OUTPUT_ERROR_LENGTH_OVER.getMsg());
+            return true;
+        }
+        return false;
     }
 
     public static boolean validMoveCount(String userInput) {
@@ -32,10 +48,18 @@ public class ValidationUtil {
     }
 
     private static boolean isPositiveNumber(String userInput) {
-        return Integer.parseInt(userInput) >= 1;
+        if (Integer.parseInt(userInput) < 1) {
+            System.out.println(Message.OUTPUT_ERROR_MIUNS_VALUE.getMsg());
+            return false;
+        }
+        return true;
     }
 
     private static boolean isOnlyNumber(String userInput) {
-        return userInput.matches(REG_EXP_ONLY_NUMBER);
+        if (!userInput.matches(REG_EXP_ONLY_NUMBER)) {
+            System.out.println(Message.OUTPUT_ERROR_NOT_A_NUMBER.getMsg());
+            return false;
+        }
+        return true;
     }
 }
